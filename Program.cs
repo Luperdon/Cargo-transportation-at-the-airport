@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CargoTransportationAtTheAirportF.Presenter;
 
 namespace CargoTransportationAtTheAirportF
 {
@@ -16,7 +17,11 @@ namespace CargoTransportationAtTheAirportF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+
+            var form = new MainWindow();
+            var presenter = new MainPresenter(form);
+
+            Application.Run(form);
         }
     }
 }

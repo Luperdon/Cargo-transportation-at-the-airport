@@ -8,6 +8,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
 {
     public interface ICargoDistributionToTerminals
     {
-        bool DistributeCargoToTerminals(Cargo cargo, List<Terminal> terminals);
+        Terminal ChooseTerminal(Cargo cargo, List<Terminal> terminals);
     }
 }

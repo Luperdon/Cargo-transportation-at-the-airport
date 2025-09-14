@@ -14,8 +14,12 @@ namespace CargoTransportationAtTheAirportF.Model
         public int _currentQuantityCargo { get; set; }
         public double _maxPassableWeight { get; set; }
         public double _currentWeight { get; set; }
+        public double _minProcessingTime { get; set; }
+        public double _maxProcessingTime { get; set; }
+        public double _totalProcessingTime { get; set; }
+        public int _totalProcessedCargo { get; set; }
 
-        public Terminal(int terminalNumber, int maxQuantityCargo, double maxPassableWeight)
+        public Terminal(int terminalNumber, int maxQuantityCargo, double maxPassableWeight, double minProcessingTime, double maxProcessingTime)
         {
             _terminalNumber = terminalNumber;
             cargoQueue = new Queue<Cargo>();
@@ -23,6 +27,8 @@ namespace CargoTransportationAtTheAirportF.Model
             _currentQuantityCargo = 0;
             _maxPassableWeight = maxPassableWeight;
             _currentWeight = 0;
+            _minProcessingTime = minProcessingTime;
+            _maxProcessingTime = maxProcessingTime;
         }
     }
 }

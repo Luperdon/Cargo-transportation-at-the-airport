@@ -48,11 +48,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Airplane.cs" />
-    <Compile Include="Model\AirplaneGeneratorService.cs" />
+    <Compile Include="Model\Services\AirplaneService.cs" />
     <Compile Include="Model\Cargo.cs" />
-    <Compile Include="Model\CargoGeneratorService.cs" />
-    <Compile Include="Model\CargoLoadingService.cs" />
-    <Compile Include="Presenter\Presenter.cs" />
+    <Compile Include="Model\Services\CargoDistributorService.cs" />
+    <Compile Include="Model\Services\CargoDistributorToAirplanesService.cs" />
+    <Compile Include="Model\Services\CargoService.cs" />
+    <Compile Include="Model\Services\CargoLoadingService.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToAirplanes\ExponentialDistributionToAirplanesStrategy.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToAirplanes\ICargoDistributionToAirplanes.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToAirplanes\NormalDistributionToAirplanesStrategy.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToAirplanes\SequentialDistributionToAirplanesStrategy.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToTerminals\ExponentialDistributionToTerminalsStrategy.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToTerminals\ICargoDistributionToTerminals.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToTerminals\NormalDistributionToTerminalsStrategy.cs" />
+    <Compile Include="Model\Services\Strategies\CargoDistributionToTerminals\SequentialDistributionToTerminalsStrategy.cs" />
+    <Compile Include="Model\Terminal.cs" />
+    <Compile Include="Model\Services\TerminalService.cs" />
+    <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="View\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

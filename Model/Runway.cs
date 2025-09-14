@@ -11,5 +11,12 @@ namespace CargoTransportationAtTheAirportF.Model
         public int _runwayNumber { get; set; }
         public bool _isBusy { get; set; }
         public Queue<Airplane> airplaneQueue { get; }
+
+        public Runway(int runwayNumber)
+        {
+            _runwayNumber = runwayNumber;
+            _isBusy = false;
+            airplaneQueue = new Queue<Airplane>();
+        }
     }
 }
