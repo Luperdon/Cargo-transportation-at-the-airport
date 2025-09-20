@@ -15,9 +15,11 @@ namespace CargoTransportationAtTheAirportF.Model
         public double _totalLoadingTime { get; set; }
         public double _minLoadingTime { get; set; }
         public double _maxLoadingTime { get; set; }
+        public double _totalFlightTime { get; set; }
+        public double _airplaneSpeed { get; set; }
         public Queue<Cargo> cargoQueue { get; }
 
-        public Airplane(int airplaneNumber, double loadCapacity, double minLoadingTime, double maxLoadingTime)
+        public Airplane(int airplaneNumber, double loadCapacity, double minLoadingTime, double maxLoadingTime, double airplaneSpeed)
         {
             _airplaneNumber = airplaneNumber;
             _loadCapacity = loadCapacity;
@@ -26,7 +28,9 @@ namespace CargoTransportationAtTheAirportF.Model
             _totalLoadingTime = 0;
             _minLoadingTime = minLoadingTime;
             _maxLoadingTime = maxLoadingTime;
+            _totalFlightTime = 0;
             cargoQueue = new Queue<Cargo>();
+            _airplaneSpeed = airplaneSpeed;
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CargoTransportationAtTheAirportF.Model.Services
 {
-    public class CargoDistributorService
+    public class CargoDistributorToTerminalsService
     {
         private readonly ICargoDistributionToTerminals _strategy;
         private readonly Random _rnd = new Random();
         public int _totalUprocessedCargo = 0;
-        public CargoDistributorService(ICargoDistributionToTerminals strategy)
+        public CargoDistributorToTerminalsService(ICargoDistributionToTerminals strategy)
         {
             _strategy = strategy;
         }
@@ -23,7 +23,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 var terminal = _strategy.ChooseTerminal(cargo, terminals);
                 if (terminal != null)
                 {
-                    if (terminal._maxPassableWeight < cargo._cargoWeight)
+                    if (cargo._cargoWeight <= terminal._maxPassableWeight)
                     {
                         // Кладём груз в очередь терминала
                         terminal.cargoQueue.Enqueue(cargo);

@@ -8,15 +8,22 @@ namespace CargoTransportationAtTheAirportF.Model
 {
     public class Runway
     {
-        public int _runwayNumber { get; set; }
-        public bool _isBusy { get; set; }
-        public Queue<Airplane> airplaneQueue { get; }
+        public int RunwayNumber { get; set; }
+        public Queue<Airplane> Airplanes { get; set; } = new Queue<Airplane>();
 
         public Runway(int runwayNumber)
         {
-            _runwayNumber = runwayNumber;
-            _isBusy = false;
-            airplaneQueue = new Queue<Airplane>();
+            RunwayNumber = runwayNumber;
+        }
+
+        public void AssignAirplane(Airplane airplane)
+        {
+            Airplanes.Enqueue(airplane);
+        }
+
+        public Airplane ReleaseAirplane()
+        {
+            return Airplanes.Count > 0 ? Airplanes.Dequeue() : null;
         }
     }
 }

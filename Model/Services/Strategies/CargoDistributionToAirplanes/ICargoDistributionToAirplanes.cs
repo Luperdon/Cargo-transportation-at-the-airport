@@ -8,6 +8,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistri
 {
     public interface ICargoDistributionToAirplanes
     {
-        bool DistributeCargoToAirplanes(Cargo cargo, List<Airplane> airplanes);
+        Airplane ChooseAirplane(Cargo cargo, List<Airplane> airplanes);
     }
 }

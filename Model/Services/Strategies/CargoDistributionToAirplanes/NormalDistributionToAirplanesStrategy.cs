@@ -8,21 +8,12 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistri
 {
     public class NormalDistributionToAirplanesStrategy : ICargoDistributionToAirplanes
     {
-        public bool DistributeCargoToAirplanes(Cargo cargo, List<Airplane> airplanes)
+        public Airplane ChooseAirplane(Cargo cargo, List<Airplane> airplanes)
         {
-            var suitable = airplanes
+            return airplanes
                 .Where(a => a._currentLoad + cargo._cargoWeight <= a._loadCapacity)
                 .OrderBy(a => a._cargoQuantity)
                 .FirstOrDefault();
-
-            if (suitable != null)
-            {
-                suitable.cargoQueue.Enqueue(cargo);
-                suitable._currentLoad += cargo._cargoWeight;
-                suitable._cargoQuantity++;
-                return true;
-            }
-            return false;
         }
     }
 }

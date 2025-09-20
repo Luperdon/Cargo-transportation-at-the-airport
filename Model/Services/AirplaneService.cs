@@ -8,12 +8,12 @@ namespace CargoTransportationAtTheAirportF.Model
 {
     public class AirplaneService
     {
-        public List<Airplane> CreateAirplanes(int count, double loadCapacity, double minLoadingTime, double maxLoadingTime)
+        public List<Airplane> CreateAirplanes(int count, double loadCapacity, double minLoadingTime, double maxLoadingTime, double airplaneSpeed)
         {
             var airplanes = new List<Airplane>();
             for (int i = 0; i < count; i++)
             {
-                airplanes.Add(new Airplane(i, loadCapacity, minLoadingTime, maxLoadingTime));
+                airplanes.Add(new Airplane(i, loadCapacity, minLoadingTime, maxLoadingTime, airplaneSpeed));
             }
             return airplanes;
         }

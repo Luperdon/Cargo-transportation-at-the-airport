@@ -10,14 +10,13 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistri
     {
         private readonly Random _rnd = new Random();
 
-        public bool DistributeCargoToAirplanes(Cargo cargo, List<Airplane> airplanes)
+        public Airplane ChooseAirplane(Cargo cargo, List<Airplane> airplanes)
         {
             var suitable = airplanes
                 .Where(a => a._currentLoad + cargo._cargoWeight <= a._loadCapacity)
                 .ToList();
 
-            if (!suitable.Any())
-                return false;
+            if (!suitable.Any()) return null;
 
             var weights = new List<double>();
             double sum = 0;
@@ -39,15 +38,10 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistri
             {
                 cumulative += weights[i];
                 if (r <= cumulative)
-                {
-                    suitable[i].cargoQueue.Enqueue(cargo);
-                    suitable[i]._currentLoad += cargo._cargoWeight;
-                    suitable[i]._cargoQuantity++;
-                    return true;
-                }
+                    return suitable[i];
             }
 
-            return false;
+            return suitable.Last(); // на всякий случай
         }
     }
 }

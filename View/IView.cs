@@ -19,7 +19,11 @@ namespace CargoTransportationAtTheAirportF.View
         double terminalMinProcessingTime { get; }
         double terminalMaxProcessingTime { get; }
 
+        int airplaneCount { get; }
+        double airplaneSpeed { get; }
+
         string selectedStrategy { get; }
+
 
         void ShowTerminalChart(List<Terminal> terminals);
     }

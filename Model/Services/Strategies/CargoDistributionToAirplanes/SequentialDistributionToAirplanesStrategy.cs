@@ -8,19 +8,14 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistri
 {
     public class SequentialDistributionToAirplanesStrategy : ICargoDistributionToAirplanes
     {
-        public bool DistributeCargoToAirplanes(Cargo cargo, List<Airplane> airplanes)
+        public Airplane ChooseAirplane(Cargo cargo, List<Airplane> airplanes)
         {
             foreach (var airplane in airplanes)
             {
                 if (airplane._currentLoad + cargo._cargoWeight <= airplane._loadCapacity)
-                {
-                    airplane.cargoQueue.Enqueue(cargo);
-                    airplane._currentLoad += cargo._cargoWeight;
-                    airplane._cargoQuantity++;
-                    return true;
-                }
+                    return airplane;
             }
-            return false;
+            return null;
         }
     }
 }

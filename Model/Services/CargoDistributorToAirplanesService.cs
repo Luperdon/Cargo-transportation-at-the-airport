@@ -27,21 +27,20 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 while (terminal.cargoQueue.Count > 0)
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
-                    bool placed = _strategy.DistributeCargoToAirplanes(cargo, airplanes);
 
-                    if (placed)
+                    // получаем самолёт сразу
+                    var airplane = _strategy.ChooseAirplane(cargo, airplanes);
+
+                    if (airplane != null)
                     {
-                        foreach (var airplane in airplanes)
-                        {
-                            if (airplane.cargoQueue.Contains(cargo))
-                            {
-                                double loadingTime = airplane._minLoadingTime +
-                                                     _rnd.NextDouble() * (airplane._maxLoadingTime - airplane._minLoadingTime);
+                        airplane.cargoQueue.Enqueue(cargo);
+                        airplane._currentLoad += cargo._cargoWeight;
+                        airplane._cargoQuantity++;
 
-                                airplane._totalLoadingTime += loadingTime;
-                                break;
-                            }
-                        }
+                        // время погрузки
+                        double loadingTime = airplane._minLoadingTime +
+                                             _rnd.NextDouble() * (airplane._maxLoadingTime - airplane._minLoadingTime);
+                        airplane._totalLoadingTime += loadingTime;
                     }
                     else
                     {
