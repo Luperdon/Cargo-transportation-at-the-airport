@@ -9,7 +9,10 @@ namespace CargoTransportationAtTheAirportF.View
 {
     public interface IView
     {
-        event Action CreateAndDistributeCargoToTerminals;
+        event Action CreateAndDistributeCargoToTerminals; //переделать в полное распределение по терминалам, потом по самолётам и
+        //event Action ShowAirplanesChart;
+        //event Action ShowFlightsWindow;
+        //event Action ShowTerminalWindow;
         int cargoCount { get; }
         double minCargoWeight { get; }
         double maxCargoWeight { get; }
@@ -22,8 +25,8 @@ namespace CargoTransportationAtTheAirportF.View
         int airplaneCount { get; }
         double airplaneSpeed { get; }
 
-        string selectedStrategy { get; }
-
+        string selectedStrategyTerminals { get; }
+        string selectedStrategyAirplanes { get; }
 
         void ShowTerminalChart(List<Terminal> terminals);
     }

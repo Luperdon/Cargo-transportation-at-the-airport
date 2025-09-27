@@ -19,19 +19,24 @@ namespace CargoTransportationAtTheAirportF
                 public Chart _chart { get; set; }
 
                 public event Action CreateAndDistributeCargoToTerminals;
-
+                public event Action CreateAndDistibuteCargoToAirplanes;
+                //      ----------ГРУЗЫ----------
                 public int cargoCount => int.Parse(txtCargoCount.Text);
                 public double minCargoWeight => double.Parse(txtMinCargoWeight.Text);
                 public double maxCargoWeight => double.Parse(txtMaxCargoWeight.Text);
 
+                //      ----------САМОЛЁТЫ----------
+                public int airplaneCount => int.Parse(txtAirplaneCount.Text);
+                public double airplaneSpeed => double.Parse(txtAirplaneSpeed.Text);
+                public string selectedStrategyAirplanes => cbxSetDistributionStrategyAirplanes.SelectedItem?.ToString() ?? "Последовательное";
+
+                //      ----------ТЕРМИНАЛЫ----------
                 public int terminalCount => int.Parse(txtTerminalCount.Text);
                 public int terminalMaxCapacity => int.Parse(txtTerminalCapacity.Text);
                 public double terminalMinProcessingTime => double.Parse(txtMinProcessingTime.Text);
                 public double terminalMaxProcessingTime => double.Parse(txtMaxProcessingTime.Text);
+                public string selectedStrategyTerminals => cbxSetDistributionStrategyTerminals.SelectedItem?.ToString() ?? "Последовательное";
 
-                public string selectedStrategy => cbxSetDistributionStrategy.SelectedItem?.ToString() ?? "Последовательное";
-
-                //lblUnloadedCargos.Text = $"Необработанных грузов: {presenter.UnprocessedCargoCount}";
 
                 public MainWindow()
                 {

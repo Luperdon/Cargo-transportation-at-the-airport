@@ -58,11 +58,16 @@
             this.txtMinProcessingTime = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMaxProcessingTime = new System.Windows.Forms.TextBox();
-            this.cbxSetDistributionStrategy = new System.Windows.Forms.ComboBox();
+            this.cbxSetDistributionStrategyTerminals = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.btnShowTerminalChart = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnShowFlightChart = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtAirplaneSpeed = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbxSetDistributionStrategyAirplanes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(580, 307);
+            this.label3.Location = new System.Drawing.Point(580, 362);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 20);
@@ -147,7 +152,7 @@
             // 
             this.lblTotalLoadingTime.AutoSize = true;
             this.lblTotalLoadingTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTotalLoadingTime.Location = new System.Drawing.Point(844, 507);
+            this.lblTotalLoadingTime.Location = new System.Drawing.Point(1238, 73);
             this.lblTotalLoadingTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalLoadingTime.Name = "lblTotalLoadingTime";
             this.lblTotalLoadingTime.Size = new System.Drawing.Size(183, 20);
@@ -158,7 +163,7 @@
             // 
             this.lblUnloadedCargos.AutoSize = true;
             this.lblUnloadedCargos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblUnloadedCargos.Location = new System.Drawing.Point(844, 541);
+            this.lblUnloadedCargos.Location = new System.Drawing.Point(1238, 107);
             this.lblUnloadedCargos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUnloadedCargos.Name = "lblUnloadedCargos";
             this.lblUnloadedCargos.Size = new System.Drawing.Size(175, 20);
@@ -183,7 +188,7 @@
             // 
             // txtRunwayCount
             // 
-            this.txtRunwayCount.Location = new System.Drawing.Point(581, 332);
+            this.txtRunwayCount.Location = new System.Drawing.Point(581, 387);
             this.txtRunwayCount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtRunwayCount.Name = "txtRunwayCount";
             this.txtRunwayCount.Size = new System.Drawing.Size(100, 27);
@@ -227,7 +232,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 0);
+            this.chart1.Location = new System.Drawing.Point(13, 12);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
@@ -243,7 +248,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(580, 252);
+            this.label10.Location = new System.Drawing.Point(580, 197);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(232, 20);
@@ -252,7 +257,7 @@
             // 
             // txtLoadCapacityAirplane
             // 
-            this.txtLoadCapacityAirplane.Location = new System.Drawing.Point(581, 276);
+            this.txtLoadCapacityAirplane.Location = new System.Drawing.Point(581, 221);
             this.txtLoadCapacityAirplane.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtLoadCapacityAirplane.Name = "txtLoadCapacityAirplane";
             this.txtLoadCapacityAirplane.Size = new System.Drawing.Size(100, 27);
@@ -262,7 +267,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(580, 143);
+            this.label11.Location = new System.Drawing.Point(580, 254);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(192, 20);
@@ -271,7 +276,7 @@
             // 
             // txtTerminalCount
             // 
-            this.txtTerminalCount.Location = new System.Drawing.Point(581, 166);
+            this.txtTerminalCount.Location = new System.Drawing.Point(581, 277);
             this.txtTerminalCount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTerminalCount.Name = "txtTerminalCount";
             this.txtTerminalCount.Size = new System.Drawing.Size(100, 27);
@@ -281,7 +286,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(580, 197);
+            this.label12.Location = new System.Drawing.Point(580, 308);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(192, 20);
@@ -290,7 +295,7 @@
             // 
             // txtTerminalCapacity
             // 
-            this.txtTerminalCapacity.Location = new System.Drawing.Point(581, 221);
+            this.txtTerminalCapacity.Location = new System.Drawing.Point(581, 332);
             this.txtTerminalCapacity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTerminalCapacity.Name = "txtTerminalCapacity";
             this.txtTerminalCapacity.Size = new System.Drawing.Size(100, 27);
@@ -334,18 +339,18 @@
             this.txtMaxProcessingTime.Size = new System.Drawing.Size(100, 27);
             this.txtMaxProcessingTime.TabIndex = 27;
             // 
-            // cbxSetDistributionStrategy
+            // cbxSetDistributionStrategyTerminals
             // 
-            this.cbxSetDistributionStrategy.FormattingEnabled = true;
-            this.cbxSetDistributionStrategy.Items.AddRange(new object[] {
+            this.cbxSetDistributionStrategyTerminals.FormattingEnabled = true;
+            this.cbxSetDistributionStrategyTerminals.Items.AddRange(new object[] {
             "Последовательное",
             "Нормальное",
             "Экспоненциальное"});
-            this.cbxSetDistributionStrategy.Location = new System.Drawing.Point(847, 456);
-            this.cbxSetDistributionStrategy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.cbxSetDistributionStrategy.Name = "cbxSetDistributionStrategy";
-            this.cbxSetDistributionStrategy.Size = new System.Drawing.Size(175, 28);
-            this.cbxSetDistributionStrategy.TabIndex = 28;
+            this.cbxSetDistributionStrategyTerminals.Location = new System.Drawing.Point(847, 456);
+            this.cbxSetDistributionStrategyTerminals.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cbxSetDistributionStrategyTerminals.Name = "cbxSetDistributionStrategyTerminals";
+            this.cbxSetDistributionStrategyTerminals.Size = new System.Drawing.Size(175, 28);
+            this.cbxSetDistributionStrategyTerminals.TabIndex = 28;
             // 
             // label15
             // 
@@ -362,7 +367,7 @@
             // 
             this.buttonStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.buttonStart.Location = new System.Drawing.Point(581, 409);
+            this.buttonStart.Location = new System.Drawing.Point(584, 505);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(167, 56);
             this.buttonStart.TabIndex = 30;
@@ -372,32 +377,82 @@
             // 
             // btnShowTerminalChart
             // 
-            this.btnShowTerminalChart.Location = new System.Drawing.Point(950, 620);
+            this.btnShowTerminalChart.Location = new System.Drawing.Point(277, 620);
             this.btnShowTerminalChart.Name = "btnShowTerminalChart";
             this.btnShowTerminalChart.Size = new System.Drawing.Size(258, 28);
             this.btnShowTerminalChart.TabIndex = 31;
             this.btnShowTerminalChart.Text = "Статистика по терминалам";
             this.btnShowTerminalChart.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnShowFlightChart
             // 
-            this.button2.Location = new System.Drawing.Point(668, 620);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(258, 28);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Статистика по полётам";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnShowFlightChart.Location = new System.Drawing.Point(13, 620);
+            this.btnShowFlightChart.Name = "btnShowFlightChart";
+            this.btnShowFlightChart.Size = new System.Drawing.Size(258, 28);
+            this.btnShowFlightChart.TabIndex = 32;
+            this.btnShowFlightChart.Text = "Статистика по полётам";
+            this.btnShowFlightChart.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(580, 143);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 20);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Скорость самолётов";
+            // 
+            // txtAirplaneSpeed
+            // 
+            this.txtAirplaneSpeed.Location = new System.Drawing.Point(581, 166);
+            this.txtAirplaneSpeed.Name = "txtAirplaneSpeed";
+            this.txtAirplaneSpeed.Size = new System.Drawing.Size(100, 27);
+            this.txtAirplaneSpeed.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(1237, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(184, 20);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Необработанные грузы:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(844, 487);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(387, 20);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Выберите тип распределения грузов по самолётам:";
+            // 
+            // cbxSetDistributionStrategyAirplanes
+            // 
+            this.cbxSetDistributionStrategyAirplanes.FormattingEnabled = true;
+            this.cbxSetDistributionStrategyAirplanes.Location = new System.Drawing.Point(847, 510);
+            this.cbxSetDistributionStrategyAirplanes.Name = "cbxSetDistributionStrategyAirplanes";
+            this.cbxSetDistributionStrategyAirplanes.Size = new System.Drawing.Size(175, 28);
+            this.cbxSetDistributionStrategyAirplanes.TabIndex = 37;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 687);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1494, 687);
+            this.Controls.Add(this.cbxSetDistributionStrategyAirplanes);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtAirplaneSpeed);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnShowFlightChart);
             this.Controls.Add(this.btnShowTerminalChart);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.cbxSetDistributionStrategy);
+            this.Controls.Add(this.cbxSetDistributionStrategyTerminals);
             this.Controls.Add(this.txtMaxProcessingTime);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtMinProcessingTime);
@@ -465,11 +520,16 @@
         private System.Windows.Forms.TextBox txtMinProcessingTime;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtMaxProcessingTime;
-        private System.Windows.Forms.ComboBox cbxSetDistributionStrategy;
+        private System.Windows.Forms.ComboBox cbxSetDistributionStrategyTerminals;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button btnShowTerminalChart;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnShowFlightChart;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtAirplaneSpeed;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cbxSetDistributionStrategyAirplanes;
     }
 }
 

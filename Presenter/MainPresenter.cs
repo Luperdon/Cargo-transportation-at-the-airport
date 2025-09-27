@@ -45,12 +45,12 @@ namespace CargoTransportationAtTheAirportF.Presenter
             );
 
             // 2. Определяем стратегию
-            ICargoDistributionToTerminals strategy = GetStrategy(_view.selectedStrategy);
+            ICargoDistributionToTerminals strategy = GetStrategy(_view.selectedStrategyTerminals);
 
             // 3. Создаём распределитель и запускаем
-            var distributor = new CargoDistributorToTerminalsService(strategy);
-            distributor.DistributeAll(cargos, terminals);
-            unprocessedCargoCount = distributor._totalUprocessedCargo;
+            var terminalsDistributor = new CargoDistributorToTerminalsService(strategy);
+            terminalsDistributor.DistributeAll(cargos, terminals);
+            unprocessedCargoCount = terminalsDistributor._totalUprocessedCargo;
             // 4. Передаём результат во View (для отображения Chart)
             _view.ShowTerminalChart(terminals);
         }

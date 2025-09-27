@@ -9,3 +9,5 @@ C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportation
 C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportationAtTheAirportF\obj\Debug\CargoTransportationAtTheAirportF.csproj.CoreCompileInputs.cache
 C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportationAtTheAirportF\obj\Debug\CargoTransportationAtTheAirportF.exe
 C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportationAtTheAirportF\obj\Debug\CargoTransportationAtTheAirportF.pdb
+C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportationAtTheAirportF\obj\Debug\CargoTransportationAtTheAirportF.View.FlightStatisticsWindow.resources
+C:\Users\ilcat\source\repos\CargoTransportationAtTheAirportF\CargoTransportationAtTheAirportF\obj\Debug\CargoTransportationAtTheAirportF.View.TerminalStatisticsWindow.resources
