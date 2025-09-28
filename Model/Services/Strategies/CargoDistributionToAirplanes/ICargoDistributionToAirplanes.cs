@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistributionToAirplanes
+namespace CargoTransportationAtTheAirportF.Model.Services
 {
     public interface ICargoDistributionToAirplanes
     {

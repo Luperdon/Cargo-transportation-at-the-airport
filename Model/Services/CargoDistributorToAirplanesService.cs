@@ -1,4 +1,4 @@
-﻿using CargoTransportationAtTheAirportF.Model.Services.Strategies.CargoDistributionToAirplanes;
+﻿using CargoTransportationAtTheAirportF.Model.Services.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +12,14 @@ namespace CargoTransportationAtTheAirportF.Model.Services
         private readonly ICargoDistributionToAirplanes _strategy;
         private readonly Random _rnd = new Random();
 
-        public int _totalUnloadedCargo { get; private set; }
+        public int TotalUnloadedCargo { get; private set; } = 0;
 
         public CargoDistributorToAirplanesService(ICargoDistributionToAirplanes strategy)
         {
             _strategy = strategy;
-            _totalUnloadedCargo = 0;
         }
 
-        public void DistributeAll(List<Terminal> terminals, List<Airplane> airplanes)
+        public void DistributeAllToAirplanes(List<Terminal> terminals, List<Airplane> airplanes)
         {
             foreach (var terminal in terminals)
             {
@@ -44,7 +43,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                     }
                     else
                     {
-                        _totalUnloadedCargo++;
+                        TotalUnloadedCargo++;
                     }
                 }
             }

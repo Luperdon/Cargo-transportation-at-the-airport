@@ -12,24 +12,32 @@ namespace CargoTransportationAtTheAirportF.Presenter
 {
     public class MainPresenter
     {
-        private readonly IView _view;
+        private readonly IMainView _view;
         private readonly CargoService _cargoService;
         private readonly TerminalService _terminalService;
+        private readonly AirplaneService _airplaneService;
+        private readonly RunwayService _runwayService;
+        private readonly FlightService _flightService;
         public int unprocessedCargoCount { get; private set; } = 0;
+        public int unloadedCargoCount { get; private set; } = 0;
 
-        public MainPresenter(IView view)
+        public MainPresenter(IMainView view)
         {
             _view = view;
             _cargoService = new CargoService();
             _terminalService = new TerminalService();
+            _airplaneService = new AirplaneService();
+            _runwayService = new RunwayService();
+            _flightService = new FlightService();
 
             // Подписка на событие из формы
-            _view.CreateAndDistributeCargoToTerminals += OnCreateAndDistributeCargoToTerminals;
+            _view.CompleteDistribution += OnCompleteDistribution;
+            _view.ShowFlightsWindow += OnShowFlightsWindow;
+            _view.ShowTerminalsWindow += OnShowTerminalsWindow;
         }
 
-        private void OnCreateAndDistributeCargoToTerminals()
+        private void OnCompleteDistribution()
         {
-            // 1. Создаём грузы и терминалы
             var cargos = _cargoService.CreateCargo(
                 _view.cargoCount,
                 _view.minCargoWeight,
@@ -39,30 +47,74 @@ namespace CargoTransportationAtTheAirportF.Presenter
             var terminals = _terminalService.CreateTerminals(
                 _view.terminalCount,
                 _view.terminalMaxCapacity,
-                double.MaxValue, // если хочешь учитывать maxPassableWeight, добавь поле во View
-                _view.terminalMinProcessingTime,
-                _view.terminalMaxProcessingTime
+                _view.maxPassableWeight,
+                _view.minProcessingTime,
+                _view.maxProcessingTime
             );
 
-            // 2. Определяем стратегию
-            ICargoDistributionToTerminals strategy = GetStrategy(_view.selectedStrategyTerminals);
+            var airplanes = _airplaneService.CreateAirplanes(
+                _view.airplaneCount,
+                _view.airplaneLoadCapacity,
+                _view.minLoadingTime,
+                _view.maxLoadingTime,
+                _view.airplaneSpeed
+            );
 
-            // 3. Создаём распределитель и запускаем
-            var terminalsDistributor = new CargoDistributorToTerminalsService(strategy);
-            terminalsDistributor.DistributeAll(cargos, terminals);
-            unprocessedCargoCount = terminalsDistributor._totalUprocessedCargo;
-            // 4. Передаём результат во View (для отображения Chart)
-            _view.ShowTerminalChart(terminals);
+            var runways = _runwayService.CreateRunways(_view.runwayCount);
+
+            ICargoDistributionToTerminals strategyTerminals = GetStrategyTerminals(_view.selectedStrategyTerminals);
+            ICargoDistributionToAirplanes strategyAirplanes = GetStrategyAirplanes(_view.selectedStrategyAirplanes);
+
+            var terminalsDistributor = new CargoDistributorToTerminalsService(strategyTerminals);
+            var airplanesDistributor = new CargoDistributorToAirplanesService(strategyAirplanes);
+            var airplanesToRunwaysDistributor = new RunwayDistributorService();
+
+            terminalsDistributor.DistributeAllToTerminals(cargos, terminals);
+            airplanesDistributor.DistributeAllToAirplanes(terminals, airplanes);
+            airplanesToRunwaysDistributor.DistributeAirplanesToRunways(airplanes, runways);
+
+            var flightDispatcher = new FlightDispatcherService(_flightService);
+            var flights = flightDispatcher.LaunchFlights(
+                runways,
+                _view.flightCount,
+                _view.minDistance,
+                _view.maxDistance
+            );
+
+            unprocessedCargoCount = terminalsDistributor.TotalUnprocessedCargo;
+            unloadedCargoCount = airplanesDistributor.TotalUnloadedCargo;
+
+            _view.ShowAirplaneChart(airplanes);
+            _view.ShowCargoStatistics(unprocessedCargoCount, unloadedCargoCount);
         }
 
-        private ICargoDistributionToTerminals GetStrategy(string strategyName)
+        private void OnShowFlightsWindow()
         {
-            if (strategyName == "Нормальное")
+            FlightStatisticsWindow flightStatisticsWindow = new FlightStatisticsWindow();
+            flightStatisticsWindow.Show();
+        }
+        private void OnShowTerminalsWindow()
+        {
+            TerminalStatisticsWindow terminalsStatisticsWindow = new TerminalStatisticsWindow();
+            terminalsStatisticsWindow.Show();
+        }
+        private ICargoDistributionToTerminals GetStrategyTerminals(string strategyTerminalsName)
+        {
+            if (strategyTerminalsName == "Нормальное")
                 return new NormalDistributionToTerminalsStrategy();
-            else if (strategyName == "Экспоненциальное")
+            else if (strategyTerminalsName == "Экспоненциальное")
                 return new ExponentialDistributionToTerminalsStrategy();
             else
                 return new SequentialDistributionToTerminalsStrategy(); // по умолчанию
+        }
+        private ICargoDistributionToAirplanes GetStrategyAirplanes(string strategyAirplanesName)
+        {
+            if (strategyAirplanesName == "Нормальное")
+                return new NormalDistributionToAirplanesStrategy();
+            else if (strategyAirplanesName == "Экспоненциальное")
+                return new ExponentialDistributionToAirplanesStrategy();
+            else
+                return new SequentialDistributionToAirplanesStrategy(); // по умолчанию
         }
     }
 }
