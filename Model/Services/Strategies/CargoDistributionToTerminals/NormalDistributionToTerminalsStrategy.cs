@@ -8,15 +8,23 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies
 {
     public class NormalDistributionToTerminalsStrategy : ICargoDistributionToTerminals
     {
+        private readonly Random _rnd = new Random(); // один раз
+
         public Terminal ChooseTerminal(Cargo cargo, List<Terminal> terminals)
         {
             var suitable = terminals
                 .Where(t => t.cargoQueue.Count < t._maxQuantityCargo &&
                             cargo._cargoWeight <= t._maxPassableWeight)
-                .OrderBy(t => t.cargoQueue.Count)
-                .FirstOrDefault();
+                .ToList();
 
-            return suitable;
+            if (!suitable.Any()) return null;
+
+            int minQueueCount = suitable.Min(t => t.cargoQueue.Count);
+            var candidates = suitable.Where(t => t.cargoQueue.Count == minQueueCount).ToList();
+
+            int index = _rnd.Next(candidates.Count);
+            return candidates[index];
         }
     }
+
 }

@@ -28,68 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.chartTerminals = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnShowTerminalChart = new System.Windows.Forms.Button();
-            this.btnCloseTerminalWindow = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.btnCloseWindow = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTerminals)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
+            // chartTerminals
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(453, 529);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            chartArea2.Name = "ChartArea1";
+            this.chartTerminals.ChartAreas.Add(chartArea2);
+            this.chartTerminals.Cursor = System.Windows.Forms.Cursors.No;
+            legend2.Name = "Legend1";
+            this.chartTerminals.Legends.Add(legend2);
+            this.chartTerminals.Location = new System.Drawing.Point(12, 12);
+            this.chartTerminals.Name = "chartTerminals";
+            this.chartTerminals.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartTerminals.Series.Add(series2);
+            this.chartTerminals.Size = new System.Drawing.Size(453, 529);
+            this.chartTerminals.TabIndex = 0;
+            this.chartTerminals.Text = "chart1";
             // 
             // btnShowTerminalChart
             // 
+            this.btnShowTerminalChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnShowTerminalChart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowTerminalChart.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);
             this.btnShowTerminalChart.Location = new System.Drawing.Point(671, 126);
             this.btnShowTerminalChart.Name = "btnShowTerminalChart";
             this.btnShowTerminalChart.Size = new System.Drawing.Size(208, 78);
             this.btnShowTerminalChart.TabIndex = 1;
             this.btnShowTerminalChart.Text = "Показать";
-            this.btnShowTerminalChart.UseVisualStyleBackColor = true;
+            this.btnShowTerminalChart.UseVisualStyleBackColor = false;
+            this.btnShowTerminalChart.Click += new System.EventHandler(this.btnShowTerminalChart_Click);
             // 
-            // btnCloseTerminalWindow
+            // btnCloseWindow
             // 
-            this.btnCloseTerminalWindow.Location = new System.Drawing.Point(671, 302);
-            this.btnCloseTerminalWindow.Name = "btnCloseTerminalWindow";
-            this.btnCloseTerminalWindow.Size = new System.Drawing.Size(208, 78);
-            this.btnCloseTerminalWindow.TabIndex = 2;
-            this.btnCloseTerminalWindow.Text = "Закрыть";
-            this.btnCloseTerminalWindow.UseVisualStyleBackColor = true;
+            this.btnCloseWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCloseWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseWindow.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCloseWindow.Location = new System.Drawing.Point(671, 302);
+            this.btnCloseWindow.Name = "btnCloseWindow";
+            this.btnCloseWindow.Size = new System.Drawing.Size(208, 78);
+            this.btnCloseWindow.TabIndex = 2;
+            this.btnCloseWindow.Text = "Закрыть";
+            this.btnCloseWindow.UseVisualStyleBackColor = false;
+            this.btnCloseWindow.Click += new System.EventHandler(this.btnCloseWindow_Click);
             // 
             // TerminalStatisticsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 553);
-            this.Controls.Add(this.btnCloseTerminalWindow);
+            this.Controls.Add(this.btnCloseWindow);
             this.Controls.Add(this.btnShowTerminalChart);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartTerminals);
             this.Name = "TerminalStatisticsWindow";
-            this.Text = "Статистика терминалов";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.Text = "Статистика для терминалов";
+            ((System.ComponentModel.ISupportInitialize)(this.chartTerminals)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTerminals;
         private System.Windows.Forms.Button btnShowTerminalChart;
-        private System.Windows.Forms.Button btnCloseTerminalWindow;
+        private System.Windows.Forms.Button btnCloseWindow;
     }
 }

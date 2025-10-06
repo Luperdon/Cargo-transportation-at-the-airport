@@ -1,26 +1,25 @@
 ﻿using CargoTransportationAtTheAirportF.Model;
 using CargoTransportationAtTheAirportF.View.Interface;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTransportationAtTheAirportF.Presenter
 {
     public class FlightWindowPresenter
     {
         private readonly IFlightWindow _view;
+        private readonly List<Flight> _flights;
 
-        public FlightWindowPresenter(IFlightWindow view)
+        public FlightWindowPresenter(IFlightWindow view, List<Flight> flights)
         {
             _view = view;
-            //_view.ShowFlightChart += OnShowFlightChart;
+            _flights = flights;
+
+            _view.ShowFlightsChartRequested += OnShowFlightsChart;
         }
 
-        private void OnShowFlightChart(List<Airplane> obj)
+        private void OnShowFlightsChart()
         {
-            throw new NotImplementedException();
+            _view.ShowFlightsChart(_flights);
         }
     }
 }

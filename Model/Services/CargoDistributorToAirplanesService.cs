@@ -26,17 +26,50 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 while (terminal.cargoQueue.Count > 0)
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
+                    bool loaded = false;
 
-                    // получаем самолёт сразу
+                    foreach (var airplane in airplanes)
+                    {
+                        if (airplane._currentLoad + cargo._cargoWeight <= airplane._loadCapacity)
+                        {
+                            airplane.cargoQueue.Enqueue(cargo);
+                            airplane._currentLoad += cargo._cargoWeight;
+                            airplane._cargoQuantity++;
+
+                            double loadingTime = airplane._minLoadingTime +
+                                                 _rnd.NextDouble() * (airplane._maxLoadingTime - airplane._minLoadingTime);
+                            airplane._totalLoadingTime += loadingTime;
+
+                            loaded = true;
+                            break; // груз погружен → выходим
+                        }
+                    }
+
+                    if (!loaded)
+                    {
+                        TotalUnloadedCargo++;
+                    }
+                }
+            }
+        }
+
+        public void DistributeStep(List<Terminal> terminals, List<Airplane> airplanes)
+        {
+            foreach (var terminal in terminals)
+            {
+                if (terminal.cargoQueue.Count > 0)
+                {
+                    var cargo = terminal.cargoQueue.Dequeue();
+
                     var airplane = _strategy.ChooseAirplane(cargo, airplanes);
 
-                    if (airplane != null)
+                    if (airplane != null &&
+                        airplane._currentLoad + cargo._cargoWeight <= airplane._loadCapacity)
                     {
                         airplane.cargoQueue.Enqueue(cargo);
                         airplane._currentLoad += cargo._cargoWeight;
                         airplane._cargoQuantity++;
 
-                        // время погрузки
                         double loadingTime = airplane._minLoadingTime +
                                              _rnd.NextDouble() * (airplane._maxLoadingTime - airplane._minLoadingTime);
                         airplane._totalLoadingTime += loadingTime;
@@ -48,5 +81,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 }
             }
         }
+
     }
 }

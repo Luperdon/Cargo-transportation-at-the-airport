@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -76,7 +77,15 @@
             this.txtMaxDistance = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtMaxPassableWeight = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -149,7 +158,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(844, 307);
+            this.label7.Location = new System.Drawing.Point(843, 309);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(327, 20);
@@ -245,9 +254,10 @@
             // 
             chartArea2.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Cursor = System.Windows.Forms.Cursors.No;
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(13, 12);
+            this.chart1.Location = new System.Drawing.Point(13, 37);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
@@ -255,7 +265,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(547, 566);
+            this.chart1.Size = new System.Drawing.Size(547, 541);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
             // 
@@ -342,6 +352,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.Location = new System.Drawing.Point(844, 197);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -386,6 +397,7 @@
             // buttonStart
             // 
             this.buttonStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.buttonStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.buttonStart.Location = new System.Drawing.Point(581, 601);
             this.buttonStart.Name = "buttonStart";
@@ -397,6 +409,7 @@
             // 
             // btnShowTerminalWindow
             // 
+            this.btnShowTerminalWindow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShowTerminalWindow.Location = new System.Drawing.Point(277, 620);
             this.btnShowTerminalWindow.Name = "btnShowTerminalWindow";
             this.btnShowTerminalWindow.Size = new System.Drawing.Size(258, 28);
@@ -407,6 +420,7 @@
             // 
             // btnShowFlightWindow
             // 
+            this.btnShowFlightWindow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShowFlightWindow.Location = new System.Drawing.Point(13, 620);
             this.btnShowFlightWindow.Name = "btnShowFlightWindow";
             this.btnShowFlightWindow.Size = new System.Drawing.Size(258, 28);
@@ -460,7 +474,7 @@
             "Последовательное",
             "Нормальное",
             "Экспоненциальное"});
-            this.cbxSetDistributionStrategyAirplanes.Location = new System.Drawing.Point(847, 633);
+            this.cbxSetDistributionStrategyAirplanes.Location = new System.Drawing.Point(847, 629);
             this.cbxSetDistributionStrategyAirplanes.Name = "cbxSetDistributionStrategyAirplanes";
             this.cbxSetDistributionStrategyAirplanes.Size = new System.Drawing.Size(175, 28);
             this.cbxSetDistributionStrategyAirplanes.TabIndex = 37;
@@ -487,7 +501,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label18.Location = new System.Drawing.Point(847, 359);
+            this.label18.Location = new System.Drawing.Point(843, 360);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(248, 20);
             this.label18.TabIndex = 40;
@@ -505,7 +519,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label19.Location = new System.Drawing.Point(847, 417);
+            this.label19.Location = new System.Drawing.Point(843, 417);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(253, 20);
             this.label19.TabIndex = 42;
@@ -537,11 +551,82 @@
             this.txtMaxPassableWeight.TabIndex = 45;
             this.txtMaxPassableWeight.Text = "1000";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(986, 307);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(510, 279);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 46;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.btnInfo);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Location = new System.Drawing.Point(-3, -3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1499, 37);
+            this.panel1.TabIndex = 47;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(3, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(881, 28);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Программа для моделирования работы аэропорта(управление перевозкой грузов)";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Location = new System.Drawing.Point(1278, 530);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(167, 56);
+            this.btnSave.TabIndex = 48;
+            this.btnSave.Text = "Сохранить";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoad.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.btnLoad.Location = new System.Drawing.Point(1278, 601);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(167, 56);
+            this.btnLoad.TabIndex = 49;
+            this.btnLoad.Text = "Загрузить";
+            this.btnLoad.UseVisualStyleBackColor = false;
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnInfo.Location = new System.Drawing.Point(1455, 4);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(30, 30);
+            this.btnInfo.TabIndex = 50;
+            this.btnInfo.Text = "?";
+            this.btnInfo.UseVisualStyleBackColor = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1494, 687);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtMaxPassableWeight);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.txtMaxDistance);
@@ -587,11 +672,15 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainWindow";
             this.Text = "Моделирование перевозки грузов в аэропорту";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -645,6 +734,12 @@
         private System.Windows.Forms.TextBox txtMaxDistance;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtMaxPassableWeight;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnInfo;
     }
 }
 

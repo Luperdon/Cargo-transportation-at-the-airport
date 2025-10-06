@@ -26,8 +26,9 @@ namespace CargoTransportationAtTheAirportF.Model.Services
         {
             foreach (var cargo in cargos)
             {
-                var terminal = _strategy.ChooseTerminal(cargo, terminals);
-                if (terminal != null)
+                bool assigned = false;
+
+                foreach (var terminal in terminals)
                 {
                     if (cargo._cargoWeight <= terminal._maxPassableWeight &&
                         terminal.cargoQueue.Count < terminal._maxQuantityCargo)
@@ -39,51 +40,41 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                                                 _rnd.NextDouble() * (terminal._maxProcessingTime - terminal._minProcessingTime);
                         terminal._totalProcessingTime += processingTime;
                         terminal._totalProcessedCargo++;
-                    }
-                    else
-                    {
-                        WaitingQueue.Enqueue(cargo); // кладём в очередь ожидания
+
+                        assigned = true;
+                        break; // груз распределён → выходим
                     }
                 }
-                else
+
+                if (!assigned)
                 {
-                    WaitingQueue.Enqueue(cargo); // стратегия вернула null
+                    TotalUnprocessedCargo++;
                 }
             }
-
-            // После первой попытки перераспределяем из очереди ожидания
-            TryDistributeWaitingQueue(terminals);
         }
 
-        private void TryDistributeWaitingQueue(List<Terminal> terminals)
+
+
+        public void TryDistributeSingleCargo(Cargo cargo, List<Terminal> terminals)
         {
-            int attempts = WaitingQueue.Count;
-            for (int i = 0; i < attempts; i++)
+            var terminal = _strategy.ChooseTerminal(cargo, terminals);
+
+            if (terminal != null &&
+                cargo._cargoWeight <= terminal._maxPassableWeight &&
+                terminal.cargoQueue.Count < terminal._maxQuantityCargo)
             {
-                var cargo = WaitingQueue.Dequeue();
-                var terminal = _strategy.ChooseTerminal(cargo, terminals);
+                terminal.cargoQueue.Enqueue(cargo);
+                terminal._currentQuantityCargo++;
 
-                if (terminal != null && cargo._cargoWeight <= terminal._maxPassableWeight &&
-                    terminal.cargoQueue.Count < terminal._maxQuantityCargo)
-                {
-                    terminal.cargoQueue.Enqueue(cargo);
-                    terminal._currentQuantityCargo++;
-
-                    double processingTime = terminal._minProcessingTime +
-                                            _rnd.NextDouble() * (terminal._maxProcessingTime - terminal._minProcessingTime);
-                    terminal._totalProcessingTime += processingTime;
-                    terminal._totalProcessedCargo++;
-                }
-                else
-                {
-                    // если снова не удалось — возвращаем в очередь ожидания
-                    WaitingQueue.Enqueue(cargo);
-                }
+                double processingTime = terminal._minProcessingTime +
+                                        _rnd.NextDouble() * (terminal._maxProcessingTime - terminal._minProcessingTime);
+                terminal._totalProcessingTime += processingTime;
+                terminal._totalProcessedCargo++;
             }
-
-            // Всё, что осталось в WaitingQueue, считается необработанным
-            TotalUnprocessedCargo += WaitingQueue.Count;
-            WaitingQueue.Clear();
+            else
+            {
+                TotalUnprocessedCargo++;
+            }
         }
     }
 

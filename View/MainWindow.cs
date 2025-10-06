@@ -78,12 +78,12 @@ namespace CargoTransportationAtTheAirportF
                     chart1.Series.Add(series);
                 }
 
-        public void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo)
-        {
-            lblUnprocessedCargos.Text = $"Необработанные грузы: {unprocessedCargo}";
-            lblUnloadedCargos.Text = $"Незагруженные грузы: {unloadedCargo}";
-                }
-        private void buttonStart_Click(object sender, EventArgs e)
+            public void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo)
+            {
+                lblUnprocessedCargos.Text = $"Необработанные грузы: {unprocessedCargo}";
+                lblUnloadedCargos.Text = $"Незагруженные грузы: {unloadedCargo}";
+            }
+            private void buttonStart_Click(object sender, EventArgs e)
             {
                 CompleteDistribution?.Invoke();
             }
