@@ -42,7 +42,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                         terminal._totalProcessedCargo++;
 
                         assigned = true;
-                        break; // груз распределён → выходим
+                        break; // груз распределён -Ю выходим
                     }
                 }
 
@@ -52,7 +52,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 }
             }
         }
-
 
 
         public void TryDistributeSingleCargo(Cargo cargo, List<Terminal> terminals)
@@ -77,5 +76,4 @@ namespace CargoTransportationAtTheAirportF.Model.Services
             }
         }
     }
-
 }

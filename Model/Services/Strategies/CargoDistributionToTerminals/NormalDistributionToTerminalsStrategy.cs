@@ -26,5 +26,4 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies
             return candidates[index];
         }
     }
-
 }

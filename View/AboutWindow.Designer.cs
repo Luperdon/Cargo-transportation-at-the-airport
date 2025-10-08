@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnOkay = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnOkay
+            // 
+            this.btnOkay.Location = new System.Drawing.Point(324, 306);
+            this.btnOkay.Name = "btnOkay";
+            this.btnOkay.Size = new System.Drawing.Size(150, 77);
+            this.btnOkay.TabIndex = 0;
+            this.btnOkay.Text = "Понятно";
+            this.btnOkay.UseVisualStyleBackColor = true;
+            // 
+            // AboutWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnOkay);
+            this.Name = "AboutWindow";
             this.Text = "AboutWindow";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnOkay;
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,10 +79,12 @@
             this.txtMaxPassableWeight = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.btnInfo = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -252,19 +254,19 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Cursor = System.Windows.Forms.Cursors.No;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(13, 37);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.Red;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.Red;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(547, 541);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
@@ -572,6 +574,19 @@
             this.panel1.Size = new System.Drawing.Size(1499, 37);
             this.panel1.TabIndex = 47;
             // 
+            // btnInfo
+            // 
+            this.btnInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnInfo.Location = new System.Drawing.Point(1455, 4);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(30, 30);
+            this.btnInfo.TabIndex = 50;
+            this.btnInfo.Text = "?";
+            this.btnInfo.UseVisualStyleBackColor = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -593,6 +608,7 @@
             this.btnSave.TabIndex = 48;
             this.btnSave.Text = "Сохранить";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLoad
             // 
@@ -605,19 +621,11 @@
             this.btnLoad.TabIndex = 49;
             this.btnLoad.Text = "Загрузить";
             this.btnLoad.UseVisualStyleBackColor = false;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // btnInfo
+            // openFileDialog1
             // 
-            this.btnInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnInfo.Location = new System.Drawing.Point(1455, 4);
-            this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(30, 30);
-            this.btnInfo.TabIndex = 50;
-            this.btnInfo.Text = "?";
-            this.btnInfo.UseVisualStyleBackColor = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainWindow
             // 
@@ -740,6 +748,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

@@ -1,0 +1,21 @@
+{
+  "CargoCount": 100,
+  "MinCargoWeight": 10.0,
+  "MaxCargoWeight": 50.0,
+  "AirplaneCount": 10,
+  "AirplaneSpeed": 240.0,
+  "AirplaneLoadCapacity": 20000.0,
+  "MinLoadingTime": 10.0,
+  "MaxLoadingTime": 20.0,
+  "SelectedStrategyAirplanes": "Последовательное",
+  "TerminalCount": 5,
+  "TerminalMaxCapacity": 10,
+  "MinProcessingTime": 1.0,
+  "MaxProcessingTime": 5.0,
+  "MaxPassableWeight": 1000.0,
+  "SelectedStrategyTerminals": "Последовательное",
+  "RunwayCount": 10,
+  "FlightCount": 10,
+  "MinDistance": 3600.0,
+  "MaxDistance": 7200.0
+}

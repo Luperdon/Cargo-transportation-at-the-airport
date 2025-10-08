@@ -20,6 +20,8 @@ namespace CargoTransportationAtTheAirportF.Presenter
         private readonly RunwayService _runwayService;
         private readonly FlightService _flightService;
 
+        private readonly SettingsService _settingsService;
+
         private Queue<Cargo> cargos;
         private List<Terminal> terminals;
         private List<Flight> flights;
@@ -38,10 +40,15 @@ namespace CargoTransportationAtTheAirportF.Presenter
             _runwayService = new RunwayService();
             _flightService = new FlightService();
 
+            _settingsService = new SettingsService();
+
             // Подписка на событие из формы
             _view.CompleteDistribution += OnCompleteDistribution;
             _view.ShowFlightsWindow += OnShowFlightsWindow;
             _view.ShowTerminalsWindow += OnShowTerminalsWindow;
+
+            _view.SaveSettingsRequested += OnSaveSettingsRequested;
+            _view.LoadSettingsRequested += OnLoadSettingsRequested;
         }
 
         private void OnCompleteDistribution()
@@ -101,7 +108,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
                 airplanesDistributor.DistributeStep(terminals, airplanes);
             }
 
-            //airplanesToRunwaysDistributor.DistributeAirplanesToRunways(runways, airplanes);
+            airplanesToRunwaysDistributor.DistributeAirplanesToRunways(airplanes, runways);
 
             var flightDispatcher = new FlightDispatcherService(_flightService);
             flights = flightDispatcher.LaunchFlights(
@@ -143,6 +150,93 @@ namespace CargoTransportationAtTheAirportF.Presenter
             else
             {
                 MessageBox.Show("Терминалы ещё не созданы, сначала нажмите кнопку Старт", "Ошибка");
+            }
+        }
+
+        private void OnSaveSettingsRequested()
+        {
+            if (!ValidateInput(out string errorMessage))
+            {
+                MessageBox.Show(errorMessage, "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON файлы (*.json)|*.json|Все файлы (*.*)|*.*";
+                saveFileDialog.Title = "Сохранить настройки";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var settings = new SettingsService.AppSettings
+                    {
+                        CargoCount = _view.cargoCount,
+                        MinCargoWeight = _view.minCargoWeight,
+                        MaxCargoWeight = _view.maxCargoWeight,
+
+                        AirplaneCount = _view.airplaneCount,
+                        AirplaneSpeed = _view.airplaneSpeed,
+                        AirplaneLoadCapacity = _view.airplaneLoadCapacity,
+                        MinLoadingTime = _view.minLoadingTime,
+                        MaxLoadingTime = _view.maxLoadingTime,
+                        SelectedStrategyAirplanes = _view.selectedStrategyAirplanes,
+
+                        TerminalCount = _view.terminalCount,
+                        TerminalMaxCapacity = _view.terminalMaxCapacity,
+                        MinProcessingTime = _view.minProcessingTime,
+                        MaxProcessingTime = _view.maxProcessingTime,
+                        MaxPassableWeight = _view.maxPassableWeight,
+                        SelectedStrategyTerminals = _view.selectedStrategyTerminals,
+
+                        RunwayCount = _view.runwayCount,
+
+                        FlightCount = _view.flightCount,
+                        MinDistance = _view.minDistance,
+                        MaxDistance = _view.maxDistance
+                    };
+
+                    _settingsService.SaveSettings(saveFileDialog.FileName, settings);
+                    MessageBox.Show("Настройки сохранены", "Сохранение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void OnLoadSettingsRequested()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "JSON файлы (*.json)|*.json|Все файлы (*.*)|*.*";
+                openFileDialog.Title = "Загрузить настройки";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                        var settings = _settingsService.LoadSettings(openFileDialog.FileName);
+
+                        _view.SetCargoCount(settings.CargoCount.ToString());
+                        _view.SetMinCargoWeight(settings.MinCargoWeight.ToString());
+                        _view.SetMaxCargoWeight(settings.MaxCargoWeight.ToString());
+
+                        _view.SetAirplaneCount(settings.AirplaneCount.ToString());
+                        _view.SetAirplaneSpeed(settings.AirplaneSpeed.ToString());
+                        _view.SetAirplaneLoadCapacity(settings.AirplaneLoadCapacity.ToString());
+                        _view.SetMinLoadingTime(settings.MinLoadingTime.ToString());
+                        _view.SetMaxLoadingTime(settings.MaxLoadingTime.ToString());
+                        _view.SetSelectedStrategyAirplanes(settings.SelectedStrategyAirplanes);
+
+                        _view.SetTerminalCount(settings.TerminalCount.ToString());
+                        _view.SetTerminalMaxCapacity(settings.TerminalMaxCapacity.ToString());
+                        _view.SetMinProcessingTime(settings.MinProcessingTime.ToString());
+                        _view.SetMaxProcessingTime(settings.MaxProcessingTime.ToString());
+                        _view.SetMaxPassableWeight(settings.MaxPassableWeight.ToString());
+                        _view.SetSelectedStrategyTerminals(settings.SelectedStrategyTerminals);
+
+                        _view.SetRunwayCount(settings.RunwayCount.ToString());
+
+                        _view.SetFlightCount(settings.FlightCount.ToString());
+                        _view.SetMinDistance(settings.MinDistance.ToString());
+                        _view.SetMaxDistance(settings.MaxDistance.ToString());
+
+                        MessageBox.Show("Настройки загружены", "Загрузка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
