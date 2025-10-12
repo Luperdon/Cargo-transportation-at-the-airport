@@ -9,7 +9,7 @@ namespace CargoTransportationAtTheAirportF.View
 {
     public interface IMainView
     {
-        event Action CompleteDistribution; //переделать в полное распределение
+        event Action CompleteDistribution;
         event Action ShowFlightsWindow;
         event Action ShowTerminalsWindow;
         event Action SaveSettingsRequested;
@@ -38,10 +38,12 @@ namespace CargoTransportationAtTheAirportF.View
         double minDistance { get; }
         double maxDistance { get; }
 
+        // показать результат
         void ShowAirplaneChart(List<Airplane> airplanes);
         void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo);
+        void ShowAverageTimes(double avgLoadingTime, double avgProcessingTime);
 
-        //загрузка
+        // загрузка
         void SetCargoCount(string value);
         void SetMinCargoWeight(string value);
         void SetMaxCargoWeight(string value);

@@ -58,6 +58,8 @@ namespace CargoTransportationAtTheAirportF
         {
             InitializeComponent();
 
+            this.Icon = new Icon("flight_icon.ico");
+
             _chart = chart1; // ссылка на chart1 из дизайнера
             _chart.ChartAreas.Clear();
             _chart.ChartAreas.Add(new ChartArea("ChartArea1"));
@@ -87,6 +89,13 @@ namespace CargoTransportationAtTheAirportF
             lblUnprocessedCargos.Text = $"Необработанные грузы: {unprocessedCargo}";
             lblUnloadedCargos.Text = $"Незагруженные грузы: {unloadedCargo}";
         }
+
+        public void ShowAverageTimes(double avgLoadingTime, double avgProcessingTime)
+        {
+            lblAverageLoadingTime.Text = $"Среднее время загрузки самолётов: {avgLoadingTime:F2} ч";
+            lblAverageProcessingTime.Text = $"Среднее время обработки грузов: {avgProcessingTime:F2} ч";
+        }
+
 
         public void SetCargoCount(string value) => txtCargoCount.Text = value;
         public void SetMinCargoWeight(string value) => txtMinCargoWeight.Text = value;

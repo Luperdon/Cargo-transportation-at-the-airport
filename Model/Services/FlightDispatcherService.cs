@@ -23,15 +23,23 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 var runway = runways[i % runways.Count];
                 var airplane = runway.ReleaseAirplane();
 
-                if (airplane != null)
+                // Проверяем, есть ли самолёт и есть ли у него груз
+                if (airplane == null || airplane._cargoQuantity <= 0 || airplane._currentLoad <= 0)
                 {
-                    double distance = minDistance + _rnd.NextDouble() * (maxDistance - minDistance);
-                    var flight = _flightService.CreateFlight(flightNumber++, distance, airplane, runway);
-                    flights.Add(flight);
+                    // Самолёт пустой — не создаём рейс, просто пропускаем
+                    continue;
                 }
+
+                // Рассчитываем дистанцию полёта
+                double distance = minDistance + _rnd.NextDouble() * (maxDistance - minDistance);
+
+                // Создаём рейс
+                var flight = _flightService.CreateFlight(flightNumber++, distance, airplane, runway);
+                flights.Add(flight);
             }
 
             return flights;
         }
+
     }
 }

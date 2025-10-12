@@ -8,6 +8,6 @@ namespace CargoTransportationAtTheAirportF.View.Interface
     {
         event Action ShowFlightsChartRequested;
 
-        void ShowFlightsChart(List<Flight> flights);
+        void ShowFlightsChart(List<Flight> flights, List<Airplane> allAirplanes);
     }
 }

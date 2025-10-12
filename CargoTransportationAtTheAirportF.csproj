@@ -75,11 +75,11 @@
     <Compile Include="Presenter\FlightWindowPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\TerminalWindowPresenter.cs" />
-    <Compile Include="View\AboutWindow.cs">
+    <Compile Include="View\AboutProgramWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AboutWindow.Designer.cs">
-      <DependentUpon>AboutWindow.cs</DependentUpon>
+    <Compile Include="View\AboutProgramWindow.Designer.cs">
+      <DependentUpon>AboutProgramWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FlightStatisticsWindow.cs">
       <SubType>Form</SubType>
@@ -105,8 +105,8 @@
     <Compile Include="View\TerminalStatisticsWindow.Designer.cs">
       <DependentUpon>TerminalStatisticsWindow.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\AboutWindow.resx">
-      <DependentUpon>AboutWindow.cs</DependentUpon>
+    <EmbeddedResource Include="View\AboutProgramWindow.resx">
+      <DependentUpon>AboutProgramWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FlightStatisticsWindow.resx">
       <DependentUpon>FlightStatisticsWindow.cs</DependentUpon>

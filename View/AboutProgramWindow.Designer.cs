@@ -1,6 +1,6 @@
 ﻿namespace CargoTransportationAtTheAirportF.View
 {
-    partial class AboutWindow
+    partial class AboutProgramWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -40,14 +40,14 @@
             this.btnOkay.Text = "Понятно";
             this.btnOkay.UseVisualStyleBackColor = true;
             // 
-            // AboutWindow
+            // AboutProgramWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnOkay);
-            this.Name = "AboutWindow";
-            this.Text = "AboutWindow";
+            this.Name = "AboutProgramWindow";
+            this.Text = "О программе";
             this.ResumeLayout(false);
 
         }

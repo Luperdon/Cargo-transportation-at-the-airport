@@ -121,8 +121,22 @@ namespace CargoTransportationAtTheAirportF.Presenter
             unprocessedCargoCount = terminalsDistributor.TotalUnprocessedCargo;
             unloadedCargoCount = airplanesDistributor.TotalUnloadedCargo;
 
+            double averageProcessingTime = terminals
+            .Where(t => t._totalProcessedCargo > 0)
+            .Select(t => t._totalProcessingTime / t._totalProcessedCargo)
+            .DefaultIfEmpty(0)
+            .Average();
+
+            double averageLoadingTime = airplanes
+                .Where(a => a._cargoQuantity > 0)
+                .Select(a => a._totalLoadingTime / a._cargoQuantity)
+                .DefaultIfEmpty(0)
+                .Average();
+
+            // обновляем интерфейс
             _view.ShowAirplaneChart(airplanes);
             _view.ShowCargoStatistics(unprocessedCargoCount, unloadedCargoCount);
+            _view.ShowAverageTimes(averageLoadingTime, averageProcessingTime);
         }
 
         private void OnShowFlightsWindow()
@@ -130,7 +144,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
             if(flights != null)
             {
                 var flightStatisticsWindow = new FlightStatisticsWindow();
-                var presenter = new FlightWindowPresenter(flightStatisticsWindow, flights);
+                var presenter = new FlightWindowPresenter(flightStatisticsWindow, flights, airplanes);
                 flightStatisticsWindow.Show();
             }
             else

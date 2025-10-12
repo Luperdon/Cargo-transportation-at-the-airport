@@ -16,18 +16,21 @@ namespace CargoTransportationAtTheAirportF.View
             InitializeComponent();
         }
 
-        public void ShowFlightsChart(List<Flight> flights)
+        public void ShowFlightsChart(List<Flight> flights, List<Airplane> allAirplanes)
         {
             chartFlights.Series.Clear();
 
-            var series = new Series("Дистанция полётов (км)")
+            var series = new Series("Время полётов (часы)")
             {
                 ChartType = SeriesChartType.Column
             };
 
-            foreach (var flight in flights)
+            foreach (var airplane in allAirplanes)
             {
-                series.Points.AddXY($"Рейс {flight._flightNumber}", flight._distance);
+                var flight = flights.Find(f => f._airplane == airplane);
+                double distance = flight != null ? flight._flightTime : 0;
+
+                series.Points.AddXY($"Самолёт {airplane._airplaneNumber}", distance);
             }
 
             chartFlights.Series.Add(series);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CargoTransportationAtTheAirportF.View
 {
-    public partial class AboutWindow : Form
+    public partial class AboutProgramWindow : Form
     {
-        public AboutWindow()
+        public AboutProgramWindow()
         {
             InitializeComponent();
         }
