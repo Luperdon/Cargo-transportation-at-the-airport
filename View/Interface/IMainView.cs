@@ -10,10 +10,14 @@ namespace CargoTransportationAtTheAirportF.View
     public interface IMainView
     {
         event Action CompleteDistribution;
+
         event Action ShowFlightsWindow;
         event Action ShowTerminalsWindow;
+        event Action ShowAboutWindow;
+
         event Action SaveSettingsRequested;
         event Action LoadSettingsRequested;
+
         int cargoCount { get; }
         double minCargoWeight { get; }
         double maxCargoWeight { get; }

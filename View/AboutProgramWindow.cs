@@ -16,5 +16,10 @@ namespace CargoTransportationAtTheAirportF.View
         {
             InitializeComponent();
         }
+
+        private void btnOkay_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

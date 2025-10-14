@@ -22,6 +22,7 @@ namespace CargoTransportationAtTheAirportF
 
         public event Action ShowFlightsWindow;
         public event Action ShowTerminalsWindow;
+        public event Action ShowAboutWindow;
 
         public event Action SaveSettingsRequested;
         public event Action LoadSettingsRequested;
@@ -143,6 +144,11 @@ namespace CargoTransportationAtTheAirportF
         private void btnLoad_Click(object sender, EventArgs e)
         {
             LoadSettingsRequested?.Invoke();
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            ShowAboutWindow?.Invoke();
         }
     }
 }

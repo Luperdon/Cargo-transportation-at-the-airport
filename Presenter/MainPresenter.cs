@@ -42,10 +42,12 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
             _settingsService = new SettingsService();
 
-            // Подписка на событие из формы
+            // события
             _view.CompleteDistribution += OnCompleteDistribution;
+
             _view.ShowFlightsWindow += OnShowFlightsWindow;
             _view.ShowTerminalsWindow += OnShowTerminalsWindow;
+            _view.ShowAboutWindow += OnShowAboutWindow;
 
             _view.SaveSettingsRequested += OnSaveSettingsRequested;
             _view.LoadSettingsRequested += OnLoadSettingsRequested;
@@ -167,6 +169,11 @@ namespace CargoTransportationAtTheAirportF.Presenter
             }
         }
 
+        private void OnShowAboutWindow()
+        {
+            var aboutWindow = new AboutProgramWindow();
+            aboutWindow.Show();
+        }
         private void OnSaveSettingsRequested()
         {
             if (!ValidateInput(out string errorMessage))

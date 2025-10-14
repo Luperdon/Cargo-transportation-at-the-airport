@@ -39,6 +39,7 @@
             // 
             // chartFlights
             // 
+            this.chartFlights.Anchor = System.Windows.Forms.AnchorStyles.Left;
             chartArea1.Name = "ChartArea1";
             this.chartFlights.ChartAreas.Add(chartArea1);
             this.chartFlights.Cursor = System.Windows.Forms.Cursors.No;
@@ -57,6 +58,7 @@
             // 
             // btnShowFlightChart
             // 
+            this.btnShowFlightChart.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnShowFlightChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnShowFlightChart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShowFlightChart.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);
@@ -70,6 +72,7 @@
             // 
             // btnCloseWindowFlight
             // 
+            this.btnCloseWindowFlight.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCloseWindowFlight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCloseWindowFlight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCloseWindowFlight.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);

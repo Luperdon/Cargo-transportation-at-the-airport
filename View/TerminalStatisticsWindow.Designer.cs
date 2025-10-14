@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartTerminals = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnShowTerminalChart = new System.Windows.Forms.Button();
             this.btnCloseWindow = new System.Windows.Forms.Button();
@@ -39,24 +39,26 @@
             // 
             // chartTerminals
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartTerminals.ChartAreas.Add(chartArea2);
+            this.chartTerminals.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            chartArea1.Name = "ChartArea1";
+            this.chartTerminals.ChartAreas.Add(chartArea1);
             this.chartTerminals.Cursor = System.Windows.Forms.Cursors.No;
-            legend2.Name = "Legend1";
-            this.chartTerminals.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chartTerminals.Legends.Add(legend1);
             this.chartTerminals.Location = new System.Drawing.Point(12, 12);
             this.chartTerminals.Name = "chartTerminals";
             this.chartTerminals.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartTerminals.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartTerminals.Series.Add(series1);
             this.chartTerminals.Size = new System.Drawing.Size(453, 529);
             this.chartTerminals.TabIndex = 0;
             this.chartTerminals.Text = "chart1";
             // 
             // btnShowTerminalChart
             // 
+            this.btnShowTerminalChart.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnShowTerminalChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnShowTerminalChart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShowTerminalChart.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold);
@@ -70,6 +72,7 @@
             // 
             // btnCloseWindow
             // 
+            this.btnCloseWindow.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCloseWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnCloseWindow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCloseWindow.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
