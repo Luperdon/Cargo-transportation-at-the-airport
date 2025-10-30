@@ -15,6 +15,8 @@ namespace CargoTransportationAtTheAirportF.View
         public AboutProgramWindow()
         {
             InitializeComponent();
+
+            this.Icon = new Icon("info_icon.ico");
         }
 
         private void btnOkay_Click(object sender, EventArgs e)

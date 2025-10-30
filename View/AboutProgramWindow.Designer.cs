@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutProgramWindow));
             this.btnOkay = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblAboutProgram = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtAbout = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,16 +61,6 @@
             this.panel1.Size = new System.Drawing.Size(1825, 100);
             this.panel1.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-6, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(324, 275);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblAboutProgram
             // 
             this.lblAboutProgram.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -82,9 +72,18 @@
             this.lblAboutProgram.TabIndex = 3;
             this.lblAboutProgram.Text = "О программе:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-6, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(324, 275);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // txtAbout
             // 
-            this.txtAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAbout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtAbout.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtAbout.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -93,7 +92,7 @@
             this.txtAbout.Name = "txtAbout";
             this.txtAbout.ReadOnly = true;
             this.txtAbout.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAbout.Size = new System.Drawing.Size(464, 332);
+            this.txtAbout.Size = new System.Drawing.Size(476, 344);
             this.txtAbout.TabIndex = 3;
             this.txtAbout.Text = resources.GetString("txtAbout.Text");
             // 
