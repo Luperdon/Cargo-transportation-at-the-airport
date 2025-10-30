@@ -85,10 +85,11 @@ namespace CargoTransportationAtTheAirportF
             chart1.Series.Add(series);
         }
 
-        public void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo)
+        public void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo, int brokenCargo)
         {
             lblUnprocessedCargos.Text = $"Необработанные грузы: {unprocessedCargo}";
             lblUnloadedCargos.Text = $"Незагруженные грузы: {unloadedCargo}";
+            lblBrokenCargo.Text = $"Поломанные грузы при погрузке: {brokenCargo}";
         }
 
         public void ShowAverageTimes(double avgLoadingTime, double avgProcessingTime)

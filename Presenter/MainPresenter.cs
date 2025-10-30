@@ -30,7 +30,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
         public int unprocessedCargoCount { get; private set; } = 0;
         public int unloadedCargoCount { get; private set; } = 0;
-
+        public int brokenCargo { get; private set; } = 0;
         public MainPresenter(IMainView view)
         {
             _view = view;
@@ -90,7 +90,8 @@ namespace CargoTransportationAtTheAirportF.Presenter
             ICargoDistributionToAirplanes strategyAirplanes = GetStrategyAirplanes(_view.selectedStrategyAirplanes);
 
             var terminalsDistributor = new CargoDistributorToTerminalsService(strategyTerminals);
-            var airplanesDistributor = new CargoDistributorToAirplanesService(strategyAirplanes);
+            double globalBreakProbability = 0.005;
+            var airplanesDistributor = new CargoDistributorToAirplanesService(strategyAirplanes, globalBreakProbability);
             var airplanesToRunwaysDistributor = new RunwayDistributorService();
 
             //terminalsDistributor.DistributeAllToTerminals(cargos, terminals);
@@ -122,6 +123,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
             unprocessedCargoCount = terminalsDistributor.TotalUnprocessedCargo;
             unloadedCargoCount = airplanesDistributor.TotalUnloadedCargo;
+            brokenCargo = airplanesDistributor.TotalBrokenCargo;
 
             double averageProcessingTime = terminals
             .Where(t => t._totalProcessedCargo > 0)
@@ -137,7 +139,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
             // обновляем интерфейс
             _view.ShowAirplaneChart(airplanes);
-            _view.ShowCargoStatistics(unprocessedCargoCount, unloadedCargoCount);
+            _view.ShowCargoStatistics(unprocessedCargoCount, unloadedCargoCount, brokenCargo);
             _view.ShowAverageTimes(averageLoadingTime, averageProcessingTime);
         }
 

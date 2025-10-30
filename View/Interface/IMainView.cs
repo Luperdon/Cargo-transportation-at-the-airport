@@ -44,7 +44,7 @@ namespace CargoTransportationAtTheAirportF.View
 
         // показать результат
         void ShowAirplaneChart(List<Airplane> airplanes);
-        void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo);
+        void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo, int brokenCargo);
         void ShowAverageTimes(double avgLoadingTime, double avgProcessingTime);
 
         // загрузка

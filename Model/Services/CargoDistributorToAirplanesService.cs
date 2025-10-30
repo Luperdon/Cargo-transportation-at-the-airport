@@ -1,9 +1,6 @@
 ﻿using CargoTransportationAtTheAirportF.Model.Services.Strategies;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTransportationAtTheAirportF.Model.Services
 {
@@ -13,10 +10,23 @@ namespace CargoTransportationAtTheAirportF.Model.Services
         private readonly Random _rnd = new Random();
 
         public int TotalUnloadedCargo { get; private set; } = 0;
+        public int TotalBrokenCargo { get; private set; } = 0; // новый счётчик
 
-        public CargoDistributorToAirplanesService(ICargoDistributionToAirplanes strategy)
+        // Глобальная вероятность поломки (используется, если у cargo.BreakProbability == 0)
+        private readonly double _globalBreakProbability;
+
+        public CargoDistributorToAirplanesService(ICargoDistributionToAirplanes strategy, double globalBreakProbability = 0.0)
         {
             _strategy = strategy;
+            _globalBreakProbability = Math.Max(0.0, Math.Min(1.0, globalBreakProbability));
+        }
+
+        private bool CheckIfBroken(Cargo cargo)
+        {
+            // выбор вероятности: если у груза прописана >0 — используем её, иначе глобальную
+            double p = cargo.BreakProbability > 0 ? cargo.BreakProbability : _globalBreakProbability;
+            if (p <= 0) return false;
+            return _rnd.NextDouble() < p;
         }
 
         public void DistributeAllToAirplanes(List<Terminal> terminals, List<Airplane> airplanes)
@@ -26,6 +36,18 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 while (terminal.cargoQueue.Count > 0)
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
+
+                    // Проверяем — сломался ли груз во время перемещения/погрузки
+                    if (CheckIfBroken(cargo))
+                    {
+                        cargo.IsBroken = true;
+                        TotalBrokenCargo++;
+                        // Решение: считать поломанный груз как "не загруженный" (т.е. потерян)
+                        // Если вы хотите, чтобы поломанный груз всё-таки занимал место в самолёте,
+                        // замените `continue` на обработку как обычный загруженный груз.
+                        continue;
+                    }
+
                     bool loaded = false;
 
                     foreach (var airplane in airplanes)
@@ -60,6 +82,14 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 if (terminal.cargoQueue.Count > 0)
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
+
+                    // Проверяем поломку
+                    if (CheckIfBroken(cargo))
+                    {
+                        cargo.IsBroken = true;
+                        TotalBrokenCargo++;
+                        continue; // груз поломан — не пробуем его грузить
+                    }
 
                     var airplane = _strategy.ChooseAirplane(cargo, airplanes);
 

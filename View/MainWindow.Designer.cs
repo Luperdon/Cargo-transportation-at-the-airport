@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -86,6 +86,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblAverageProcessingTime = new System.Windows.Forms.Label();
+            this.lblBrokenCargo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -180,7 +181,7 @@
             this.lblAverageLoadingTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAverageLoadingTime.AutoSize = true;
             this.lblAverageLoadingTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblAverageLoadingTime.Location = new System.Drawing.Point(1228, 87);
+            this.lblAverageLoadingTime.Location = new System.Drawing.Point(1298, 87);
             this.lblAverageLoadingTime.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAverageLoadingTime.Name = "lblAverageLoadingTime";
             this.lblAverageLoadingTime.Size = new System.Drawing.Size(218, 20);
@@ -192,7 +193,7 @@
             this.lblUnloadedCargos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUnloadedCargos.AutoSize = true;
             this.lblUnloadedCargos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblUnloadedCargos.Location = new System.Drawing.Point(1228, 61);
+            this.lblUnloadedCargos.Location = new System.Drawing.Point(1298, 61);
             this.lblUnloadedCargos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUnloadedCargos.Name = "lblUnloadedCargos";
             this.lblUnloadedCargos.Size = new System.Drawing.Size(175, 20);
@@ -271,19 +272,19 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Cursor = System.Windows.Forms.Cursors.No;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(13, 37);
             this.chart1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(499, 513);
             this.chart1.TabIndex = 17;
             this.chart1.Text = "chart1";
@@ -490,7 +491,7 @@
             this.lblUnprocessedCargos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUnprocessedCargos.AutoSize = true;
             this.lblUnprocessedCargos.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUnprocessedCargos.Location = new System.Drawing.Point(1228, 37);
+            this.lblUnprocessedCargos.Location = new System.Drawing.Point(1298, 37);
             this.lblUnprocessedCargos.Name = "lblUnprocessedCargos";
             this.lblUnprocessedCargos.Size = new System.Drawing.Size(184, 20);
             this.lblUnprocessedCargos.TabIndex = 35;
@@ -684,17 +685,29 @@
             this.lblAverageProcessingTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAverageProcessingTime.AutoSize = true;
             this.lblAverageProcessingTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAverageProcessingTime.Location = new System.Drawing.Point(1228, 115);
+            this.lblAverageProcessingTime.Location = new System.Drawing.Point(1298, 115);
             this.lblAverageProcessingTime.Name = "lblAverageProcessingTime";
             this.lblAverageProcessingTime.Size = new System.Drawing.Size(230, 20);
             this.lblAverageProcessingTime.TabIndex = 50;
             this.lblAverageProcessingTime.Text = "Среднее время обработки (ч):";
+            // 
+            // lblBrokenCargo
+            // 
+            this.lblBrokenCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBrokenCargo.AutoSize = true;
+            this.lblBrokenCargo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBrokenCargo.Location = new System.Drawing.Point(1298, 143);
+            this.lblBrokenCargo.Name = "lblBrokenCargo";
+            this.lblBrokenCargo.Size = new System.Drawing.Size(254, 20);
+            this.lblBrokenCargo.TabIndex = 51;
+            this.lblBrokenCargo.Text = "Поломанные грузы при погрузке:";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1608, 714);
+            this.Controls.Add(this.lblBrokenCargo);
             this.Controls.Add(this.lblAverageProcessingTime);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.btnSave);
@@ -815,6 +828,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblAverageProcessingTime;
+        private System.Windows.Forms.Label lblBrokenCargo;
     }
 }
 
