@@ -10,9 +10,8 @@ namespace CargoTransportationAtTheAirportF.Model.Services
         private readonly Random _rnd = new Random();
 
         public int TotalUnloadedCargo { get; private set; } = 0;
-        public int TotalBrokenCargo { get; private set; } = 0; // новый счётчик
+        public int TotalBrokenCargo { get; private set; } = 0;
 
-        // Глобальная вероятность поломки (используется, если у cargo.BreakProbability == 0)
         private readonly double _globalBreakProbability;
 
         public CargoDistributorToAirplanesService(ICargoDistributionToAirplanes strategy, double globalBreakProbability = 0.0)
@@ -23,7 +22,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
 
         private bool CheckIfBroken(Cargo cargo)
         {
-            // выбор вероятности: если у груза прописана >0 — используем её, иначе глобальную
             double p = cargo.BreakProbability > 0 ? cargo.BreakProbability : _globalBreakProbability;
             if (p <= 0) return false;
             return _rnd.NextDouble() < p;
@@ -37,14 +35,10 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
 
-                    // Проверяем — сломался ли груз во время перемещения/погрузки
                     if (CheckIfBroken(cargo))
                     {
                         cargo.IsBroken = true;
                         TotalBrokenCargo++;
-                        // Решение: считать поломанный груз как "не загруженный" (т.е. потерян)
-                        // Если вы хотите, чтобы поломанный груз всё-таки занимал место в самолёте,
-                        // замените `continue` на обработку как обычный загруженный груз.
                         continue;
                     }
 
@@ -63,7 +57,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                             airplane._totalLoadingTime += loadingTime;
 
                             loaded = true;
-                            break; // груз погружен → выходим
+                            break;
                         }
                     }
 
@@ -83,12 +77,11 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 {
                     var cargo = terminal.cargoQueue.Dequeue();
 
-                    // Проверяем поломку
                     if (CheckIfBroken(cargo))
                     {
                         cargo.IsBroken = true;
                         TotalBrokenCargo++;
-                        continue; // груз поломан — не пробуем его грузить
+                        continue;
                     }
 
                     var airplane = _strategy.ChooseAirplane(cargo, airplanes);

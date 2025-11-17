@@ -61,7 +61,7 @@ namespace CargoTransportationAtTheAirportF
 
             this.Icon = new Icon("flight_icon.ico");
 
-            _chart = chart1; // ссылка на chart1 из дизайнера
+            _chart = chart1;
             _chart.ChartAreas.Clear();
             _chart.ChartAreas.Add(new ChartArea("ChartArea1"));
         }

@@ -11,10 +11,8 @@ namespace CargoTransportationAtTheAirportF.Model.Services
         private readonly ICargoDistributionToTerminals _strategy;
         private readonly Random _rnd = new Random();
 
-        // Публичные свойства
         public int TotalUnprocessedCargo { get; private set; } = 0;
 
-        // Очередь ожидания
         public Queue<Cargo> WaitingQueue { get; private set; } = new Queue<Cargo>();
 
         public CargoDistributorToTerminalsService(ICargoDistributionToTerminals strategy)
@@ -42,7 +40,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                         terminal._totalProcessedCargo++;
 
                         assigned = true;
-                        break; // груз распределён -Ю выходим
+                        break;
                     }
                 }
 

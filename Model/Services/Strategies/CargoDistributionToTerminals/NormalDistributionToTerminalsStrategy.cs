@@ -8,7 +8,7 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies
 {
     public class NormalDistributionToTerminalsStrategy : ICargoDistributionToTerminals
     {
-        private readonly Random _rnd = new Random(); // один раз
+        private readonly Random _rnd = new Random();
 
         public Terminal ChooseTerminal(Cargo cargo, List<Terminal> terminals)
         {

@@ -18,7 +18,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
             var flights = new List<Flight>();
             int flightNumber = 1;
 
-            // 1️⃣ Собираем всех загруженных самолётов со всех полос
             var loadedAirplanes = new List<(Airplane airplane, Runway runway)>();
             foreach (var runway in runways)
             {
@@ -32,9 +31,8 @@ namespace CargoTransportationAtTheAirportF.Model.Services
             }
 
             if (loadedAirplanes.Count == 0)
-                return flights; // Нет самолётов — выходим
+                return flights;
 
-            // 2️⃣ Создаём список дистанций (точек)
             var distances = new List<double>();
             for (int i = 0; i < flightCount; i++)
             {
@@ -42,11 +40,10 @@ namespace CargoTransportationAtTheAirportF.Model.Services
                 distances.Add(distance);
             }
 
-            // 3️⃣ Назначаем каждому самолёту одну из точек (циклически)
             for (int i = 0; i < loadedAirplanes.Count; i++)
             {
                 var (airplane, runway) = loadedAirplanes[i];
-                double distance = distances[i % distances.Count]; // равномерное распределение
+                double distance = distances[i % distances.Count];
 
                 var flight = _flightService.CreateFlight(flightNumber++, distance, airplane, runway);
                 flights.Add(flight);

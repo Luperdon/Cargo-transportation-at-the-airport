@@ -42,7 +42,6 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
             _settingsService = new SettingsService();
 
-            // события
             _view.CompleteDistribution += OnCompleteDistribution;
 
             _view.ShowFlightsWindow += OnShowFlightsWindow;
@@ -90,7 +89,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
             ICargoDistributionToAirplanes strategyAirplanes = GetStrategyAirplanes(_view.selectedStrategyAirplanes);
 
             var terminalsDistributor = new CargoDistributorToTerminalsService(strategyTerminals);
-            double globalBreakProbability = 0.005;
+            double globalBreakProbability = 0;
             var airplanesDistributor = new CargoDistributorToAirplanesService(strategyAirplanes, globalBreakProbability);
             var airplanesToRunwaysDistributor = new RunwayDistributorService();
 
@@ -100,14 +99,12 @@ namespace CargoTransportationAtTheAirportF.Presenter
 
             while (cargos.Any() || terminals.Any(t => t.cargoQueue.Count > 0))
             {
-                // шаг 1: пробуем направить новые грузы в терминалы
                 if (cargos.Any())
                 {
                     var newCargo = cargos.Dequeue();
                     terminalsDistributor.TryDistributeSingleCargo(newCargo, terminals);
                 }
 
-                // шаг 2: терминалы отдают грузы в самолёты
                 airplanesDistributor.DistributeStep(terminals, airplanes);
             }
 
@@ -137,7 +134,6 @@ namespace CargoTransportationAtTheAirportF.Presenter
                 .DefaultIfEmpty(0)
                 .Average();
 
-            // обновляем интерфейс
             _view.ShowAirplaneChart(airplanes);
             _view.ShowCargoStatistics(unprocessedCargoCount, unloadedCargoCount, brokenCargo);
             _view.ShowAverageTimes(averageLoadingTime, averageProcessingTime);
@@ -327,7 +323,7 @@ namespace CargoTransportationAtTheAirportF.Presenter
                 if (_view.minDistance > _view.maxDistance)
                     errorMessage += "Минимальная дистанция больше максимальной.\n";
 
-                return string.IsNullOrEmpty(errorMessage); // true, если ошибок нет
+                return string.IsNullOrEmpty(errorMessage);
             }
             catch (Exception ex)
             {

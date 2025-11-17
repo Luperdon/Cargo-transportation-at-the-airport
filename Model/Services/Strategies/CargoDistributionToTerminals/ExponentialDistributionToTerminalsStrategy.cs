@@ -20,7 +20,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies
             if (!suitable.Any())
                 return null;
 
-            // создаём веса по экспоненте: 1/2^i
             var weights = new List<double>();
             double sum = 0;
             for (int i = 0; i < suitable.Count; i++)
@@ -30,7 +29,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services.Strategies
                 sum += w;
             }
 
-            // нормализация
             for (int i = 0; i < weights.Count; i++)
                 weights[i] /= sum;
 

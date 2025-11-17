@@ -42,12 +42,10 @@ namespace CargoTransportationAtTheAirportF.View
         double minDistance { get; }
         double maxDistance { get; }
 
-        // показать результат
         void ShowAirplaneChart(List<Airplane> airplanes);
         void ShowCargoStatistics(int unprocessedCargo, int unloadedCargo, int brokenCargo);
         void ShowAverageTimes(double avgLoadingTime, double avgProcessingTime);
 
-        // загрузка
         void SetCargoCount(string value);
         void SetMinCargoWeight(string value);
         void SetMaxCargoWeight(string value);

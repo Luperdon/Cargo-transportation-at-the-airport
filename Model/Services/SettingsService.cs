@@ -5,7 +5,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
 {
     public class SettingsService
     {
-        // Класс для хранения всех настроек
         public class AppSettings
         {
             public int CargoCount { get; set; }
@@ -33,7 +32,6 @@ namespace CargoTransportationAtTheAirportF.Model.Services
             public double MaxDistance { get; set; }
         }
 
-        // Сохранение настроек в JSON
         public AppSettings LoadSettings(string filePath)
         {
             var json = File.ReadAllText(filePath);
